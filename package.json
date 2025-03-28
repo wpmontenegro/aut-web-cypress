@@ -4,7 +4,8 @@
   "description": "Web Automation with Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "cy:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667"
   },
   "repository": {
     "type": "git",

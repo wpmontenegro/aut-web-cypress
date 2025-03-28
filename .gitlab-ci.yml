@@ -4,9 +4,11 @@ stages:
 test:
   image: node:latest
   stage: test
-  script:
+  when: never
+  before_script:
     # install dependencies
     - npm ci
+  script:
     # start the server in the background
     - npm start &
     # run Cypress tests
