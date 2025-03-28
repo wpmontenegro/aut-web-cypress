@@ -4,7 +4,7 @@ stages:
 test:
   image: node:latest
   stage: test
-  when: never
+  when: manual
   before_script:
     # install dependencies
     - npm ci
