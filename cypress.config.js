@@ -6,7 +6,6 @@ const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
 
 module.exports = defineConfig({
   e2e: {
-    specPattern: "cypress/e2e/**/*.feature",
     async setupNodeEvents(on, config) {
       await preprocessor.addCucumberPreprocessorPlugin(on, config);
       on(
@@ -17,5 +16,7 @@ module.exports = defineConfig({
       );
       return config;
     },
+    specPattern: "cypress/e2e/**/*.feature",
+    baseUrl: "https://www.saucedemo.com",
   },
 });
