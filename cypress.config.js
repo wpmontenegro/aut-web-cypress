@@ -16,6 +16,10 @@ module.exports = defineConfig({
       );
       return config;
     },
+    env: {
+      omitFiltered: true,
+      filterSpecs: true,
+    },
     specPattern: "cypress/e2e/**/*.feature",
     baseUrl: "https://www.saucedemo.com",
   },
