@@ -6,7 +6,7 @@
     "cypress/support/step_definitions/**/*.{js,ts}"
   ],
   "json": {
-    "output": "cypress/reports/json/cucumber.json",
+    "output": "cypress/reports/json/cucumber-report.json",
     "enabled": true
   }
 }
