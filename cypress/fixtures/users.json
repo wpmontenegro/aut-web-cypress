@@ -1,0 +1,17 @@
+[
+  {
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "type": "standar"
+  },
+  {
+    "username": "locked_out_user",
+    "password": "secret_sauce",
+    "type": "locked"
+  },
+  {
+    "username": "visual_user",
+    "password": "secret_sauce",
+    "type": "visual"
+  }
+]

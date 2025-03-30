@@ -12,4 +12,4 @@ test:
     # start the server in the background
     - npm start &
     # run Cypress tests
-    - npm run e2e
+    - npm run cy:run
