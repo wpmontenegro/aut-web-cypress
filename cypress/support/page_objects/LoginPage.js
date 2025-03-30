@@ -1,18 +1,14 @@
 class LoginPage {
-  constructor() {
-    this.usernameField = "#user-name";
-    this.passwordField = "#password";
-    this.loginButton = "#login-button";
-  }
-
   ingresarCredenciales(username, password) {
-    cy.get(this.usernameField).type(username);
-    cy.get(this.passwordField).type(password);
+    cy.get("#user-name").type(username);
+    cy.get("#password").type(password);
+    return this;
   }
 
   clickLogin() {
-    cy.get(this.loginButton).click();
+    return cy.get("#login-button").click();
   }
 }
 
-export default LoginPage;
+const loginPage = new LoginPage();
+export default loginPage;

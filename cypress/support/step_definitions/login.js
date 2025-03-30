@@ -1,7 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import LoginPage from "../page_objects/LoginPage";
-
-const loginPage = new LoginPage();
+import loginPage from "../page_objects/LoginPage";
 
 Given("el usuario abre la página de login", () => {
   cy.visit("/");

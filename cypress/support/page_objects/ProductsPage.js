@@ -1,22 +1,16 @@
 class ProductPage {
-  constructor() {
-    this.itemName = ".inventory_item_name";
-    this.itemDescription = ".inventory_item_description";
-    this.butonAddToCart = "add-to-cart";
-    this.shoppingCart = "shopping-cart-badge";
-  }
-
   agregarProductoAlCarrito(product) {
-    cy.get(this.itemName)
+    cy.get(".inventory_item_name")
       .contains(product)
-      .closest(this.itemDescription)
-      .findByDataTest(this.butonAddToCart)
+      .closest(".inventory_item_description")
+      .findByDataTest("add-to-cart")
       .click();
   }
 
   verificarCantidadProductosEnCarrito(numberItems) {
-    cy.getByDataTest(this.shoppingCart).contains(numberItems);
+    cy.getByDataTest("shopping-cart-badge").contains(numberItems);
   }
 }
 
-export default ProductPage;
+const productPage = new ProductPage();
+export default productPage;

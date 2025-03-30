@@ -1,9 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import LoginPage from "../page_objects/LoginPage";
-import ProductPage from "../page_objects/ProductsPage";
-
-const loginPage = new LoginPage();
-const productPage = new ProductPage();
+import loginPage from "../page_objects/LoginPage";
+import productPage from "../page_objects/ProductsPage";
 
 Given("el usuario se encuentra en la página de inventario", () => {
   cy.visit("/");
@@ -17,6 +14,6 @@ When("selecciona los productos", (table) => {
   });
 });
 
-When("se deberían agregar {int} productos al carrito", (numberItems) => {
+Then("se deberían agregar {int} productos al carrito", (numberItems) => {
   productPage.verificarCantidadProductosEnCarrito(numberItems);
 });
