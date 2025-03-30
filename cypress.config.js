@@ -14,6 +14,7 @@ module.exports = defineConfig({
           plugins: [createEsbuildPlugin(config)],
         })
       );
+      configureEnvironment(config);
       return config;
     },
     env: {
@@ -21,6 +22,23 @@ module.exports = defineConfig({
       filterSpecs: true,
     },
     specPattern: "cypress/e2e/**/*.feature",
-    baseUrl: "https://www.saucedemo.com",
   },
 });
+
+function configureEnvironment(config) {
+  const environmentName = config.env.environment || "qa";
+  const environmentFilename = `./cypress/settings/${environmentName}.settings.json`;
+  const settings = require(environmentFilename);
+
+  if (settings.baseUrl) {
+    config.baseUrl = settings.baseUrl;
+  }
+
+  if (settings.env) {
+    config.env = {
+      ...config.env,
+      ...settings.env,
+    };
+  }
+  console.log("Loaded settings for environment %s", environmentName);
+}

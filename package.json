@@ -6,7 +6,10 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667"
+    "cy:qa": "cypress run --env environment=qa",
+    "cy:dev": "cypress run --env environment=dev",
+    "cy:firefox": "cypress run --browser firefox",
+    "cy:mobile": "cypress run --config viewportWidth=375,viewportHeight=667"
   },
   "repository": {
     "type": "git",
