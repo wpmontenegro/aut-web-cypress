@@ -16,7 +16,6 @@ module.exports = defineConfig({
     reportFilename: "cypress_report",
     embeddedScreenshots: true,
     inlineAssets: true,
-    saveJson: true,
     timestamp: "mmddyyyy_HHMMss",
   },
   e2e: {
