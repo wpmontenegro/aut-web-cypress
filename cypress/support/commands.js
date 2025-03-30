@@ -17,7 +17,7 @@ Cypress.Commands.add(
   "findByDataTest",
   { prevSubject: true },
   (subject, selector) => {
-    return subject.find(`[data-test*="${selector}"]`);
+    return cy.wrap(subject).find(`[data-test*="${selector}"]`);
   }
 );
 

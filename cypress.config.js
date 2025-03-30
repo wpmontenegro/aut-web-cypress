@@ -20,17 +20,7 @@ module.exports = defineConfig({
   },
   e2e: {
     async setupNodeEvents(cypressOn, config) {
-      const on = cypressOnFix(cypressOn);
-      cypressMochawesomeReport(on);
-      await addCucumberPreprocessorPlugin(on, config);
-      on(
-        "file:preprocessor",
-        createBundler({
-          plugins: [createEsbuildPlugin(config)],
-        })
-      );
-      configureEnvironment(config);
-      return config;
+      return await setupPlugins(cypressOn, config);
     },
     env: {
       omitFiltered: true,
@@ -40,10 +30,32 @@ module.exports = defineConfig({
   },
 });
 
-function configureEnvironment(config) {
+async function setupPlugins(cypressOn, config) {
+  const on = cypressOnFix(cypressOn);
+  cypressMochawesomeReport(on);
+  await addCucumberPreprocessorPlugin(on, config);
+
+  on(
+    "file:preprocessor",
+    createBundler({
+      plugins: [createEsbuildPlugin(config)],
+    })
+  );
+
+  setupEnvironment(config);
+  return config;
+}
+
+function setupEnvironment(config) {
   const environmentName = config.env.environment || "qa";
   const environmentFilename = `./cypress/settings/${environmentName}.settings.json`;
-  const settings = require(environmentFilename);
+
+  let settings = {};
+  try {
+    settings = require(environmentFilename);
+  } catch (error) {
+    console.warn(`No settings file found for environment ${environmentName}`);
+  }
 
   if (settings.baseUrl) {
     config.baseUrl = settings.baseUrl;
