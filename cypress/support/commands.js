@@ -20,3 +20,10 @@ Cypress.Commands.add(
     return subject.find(`[data-test*="${selector}"]`);
   }
 );
+
+Cypress.Commands.add("takeScreenshot", () => {
+  if (Cypress.config("isInteractive")) {
+    return;
+  }
+  cy.screenshot({ capture: "runner" });
+});
