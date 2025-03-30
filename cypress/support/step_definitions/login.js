@@ -8,12 +8,13 @@ Given("el usuario abre la página de login", () => {
 When(
   "ingresa el usuario {string} y contraseña {string}",
   (username, password) => {
-    loginPage.ingresarCredenciales(username, password);
+    loginPage.getUsername().type(username);
+    loginPage.getPassword().type(password);
   }
 );
 
 When("presiona el botón de login", () => {
-  loginPage.clickLogin();
+  loginPage.getLoginButton().click();
 });
 
 Then("debería ver la página de inventario", () => {

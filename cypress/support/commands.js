@@ -1,14 +1,5 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
+import loginPage from "./page_objects/LoginPage";
+
 Cypress.Commands.add("getByDataTest", (selector) => {
   return cy.get(`[data-test*="${selector}"]`);
 });
@@ -26,4 +17,10 @@ Cypress.Commands.add("takeScreenshot", () => {
     return;
   }
   cy.screenshot({ capture: "runner" });
+});
+
+Cypress.Commands.add("login", (username, password) => {
+  loginPage.getUsername().type(username);
+  loginPage.getPassword().type(password);
+  loginPage.getLoginButton().click();
 });

@@ -1,14 +1,15 @@
-class LoginPage {
-  ingresarCredenciales(username, password) {
-    cy.get("#user-name").type(username);
-    cy.get("#password").type(password);
-    return this;
-  }
+const loginPage = {
+  getUsername: () => {
+    return cy.get("#user-name");
+  },
 
-  clickLogin() {
-    return cy.get("#login-button").click();
-  }
-}
+  getPassword: () => {
+    return cy.get("#password");
+  },
 
-const loginPage = new LoginPage();
+  getLoginButton() {
+    return cy.get("#login-button");
+  },
+};
+
 export default loginPage;
