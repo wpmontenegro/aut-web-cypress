@@ -1,13 +1,31 @@
 const { defineConfig } = require("cypress");
+const cypressOnFix = require("cypress-on-fix");
+const cypressMochawesomeReport = require("cypress-mochawesome-reporter/plugin");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const createEsbuildPlugin =
   require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
-const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
+const {
+  addCucumberPreprocessorPlugin,
+} = require("@badeball/cypress-cucumber-preprocessor");
 
 module.exports = defineConfig({
+  reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: "Cypress Execution Report",
+    reportFilename: "cypress_report",
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    overwrite: false,
+    html: true,
+    json: true,
+    timestamp: "mmddyyyy_HHMMss",
+  },
   e2e: {
-    async setupNodeEvents(on, config) {
-      await preprocessor.addCucumberPreprocessorPlugin(on, config);
+    async setupNodeEvents(cypressOn, config) {
+      const on = cypressOnFix(cypressOn);
+      cypressMochawesomeReport(on);
+      await addCucumberPreprocessorPlugin(on, config);
       on(
         "file:preprocessor",
         createBundler({
