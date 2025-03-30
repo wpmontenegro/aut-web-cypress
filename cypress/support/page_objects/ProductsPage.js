@@ -7,7 +7,8 @@ class ProductPage {
   }
 
   agregarProductoAlCarrito(product) {
-    cy.contains(this.itemName, product)
+    cy.get(this.itemName)
+      .contains(product)
       .closest(this.itemDescription)
       .findByDataTest(this.butonAddToCart)
       .click();
