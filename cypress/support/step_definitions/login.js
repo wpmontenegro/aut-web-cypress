@@ -20,3 +20,11 @@ When("presiona el botón de login", () => {
 Then("debería ver la página de inventario", () => {
   cy.url().should("include", "/inventory");
 });
+
+When("ingresa el usuario de tipo {string} y nos logueamos", (type) => {
+  cy.loginByType(type);
+});
+
+Then("debería ver el mensaje de error {string}", (message) => {
+  loginPage.getErrorMessage().should("include.text", message);
+});

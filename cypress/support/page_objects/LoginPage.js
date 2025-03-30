@@ -10,6 +10,10 @@ const loginPage = {
   getLoginButton() {
     return cy.get("#login-button");
   },
+
+  getErrorMessage() {
+    return cy.getByDataTest("error");
+  },
 };
 
 export default loginPage;

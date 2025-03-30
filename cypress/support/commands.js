@@ -19,8 +19,16 @@ Cypress.Commands.add("takeScreenshot", () => {
   cy.screenshot({ capture: "runner" });
 });
 
-Cypress.Commands.add("login", (username, password) => {
-  loginPage.getUsername().type(username);
-  loginPage.getPassword().type(password);
-  loginPage.getLoginButton().click();
+Cypress.Commands.add("getUserDataByType", (type) => {
+  return cy.fixture("users.json").then((users) => {
+    return users.find((u) => u.type == type);
+  });
+});
+
+Cypress.Commands.add("loginByType", (type) => {
+  cy.getUserDataByType(type).then((user) => {
+    loginPage.getUsername().type(user.username);
+    loginPage.getPassword().type(user.password);
+    loginPage.getLoginButton().click();
+  });
 });

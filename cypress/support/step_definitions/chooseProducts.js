@@ -3,7 +3,7 @@ import productPage from "../page_objects/ProductsPage";
 
 Given("el usuario se encuentra en la página de inventario", () => {
   cy.visit("/");
-  cy.login("standard_user", "secret_sauce");
+  cy.loginByType("standar");
 });
 
 When("selecciona los productos", (table) => {
