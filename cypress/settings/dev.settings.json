@@ -1,6 +1,7 @@
 {
   "baseUrl": "https://www.saucedemo.com",
   "env": {
-    "environment": "dev"
+    "environment": "dev",
+    "apiKey": "your_api_key_here"
   }
 }
