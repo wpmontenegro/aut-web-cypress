@@ -1,5 +1,8 @@
 import loginPage from "./page_objects/LoginPage";
 
+const globalStore = new Map();
+
+// LOCATORS
 Cypress.Commands.add("getByDataTest", (selector) => {
   return cy.get(`[data-test*="${selector}"]`);
 });
@@ -12,6 +15,7 @@ Cypress.Commands.add(
   }
 );
 
+// SCREENSHOT
 Cypress.Commands.add("takeScreenshot", () => {
   if (Cypress.config("isInteractive")) {
     return;
@@ -19,6 +23,20 @@ Cypress.Commands.add("takeScreenshot", () => {
   cy.screenshot({ capture: "runner" });
 });
 
+// DATA MANAGMENT
+Cypress.Commands.add("setGlobalValue", (key, value) => {
+  globalStore.set(key, value);
+});
+
+Cypress.Commands.add("getGlobalValue", (key) => {
+  return cy.wrap(globalStore.get(key) || null);
+});
+
+Cypress.Commands.add("clearGlobalStore", () => {
+  globalStore.clear();
+});
+
+// CUSTOM
 Cypress.Commands.add("getUserDataByType", (type) => {
   return cy.fixture("users.json").then((users) => {
     return users.find((u) => u.type == type);
