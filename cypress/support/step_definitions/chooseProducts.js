@@ -1,5 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import productPage from "../page_objects/ProductsPage";
+import { productPage } from "../pages/ProductsPage";
 
 Given("el usuario se encuentra en la página de inventario", () => {
   cy.visit("/");

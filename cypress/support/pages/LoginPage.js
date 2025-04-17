@@ -1,19 +1,19 @@
-const loginPage = {
-  getUsername: () => {
+class LoginPage {
+  getUsername() {
     return cy.get("#user-name");
-  },
+  }
 
-  getPassword: () => {
+  getPassword() {
     return cy.get("#password");
-  },
+  }
 
   getLoginButton() {
     return cy.get("#login-button");
-  },
+  }
 
   getErrorMessage() {
     return cy.getByDataTest("error");
-  },
-};
+  }
+}
 
-export default loginPage;
+export const loginPage = new LoginPage();
