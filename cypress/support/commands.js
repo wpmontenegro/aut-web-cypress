@@ -4,7 +4,7 @@ const globalStore = new Map();
 
 // LOCATORS
 Cypress.Commands.add("getByDataTest", (selector) => {
-  return cy.get(`[data-test*="${selector}"]`);
+  return cy.get(`[data-test="${selector}"]`);
 });
 
 Cypress.Commands.add(
@@ -38,7 +38,7 @@ Cypress.Commands.add("clearGlobalStore", () => {
 
 // CUSTOM
 Cypress.Commands.add("getUserDataByType", (type) => {
-  return cy.fixture("users.json").then((users) => {
+  return cy.fixture("data/users").then((users) => {
     return users.find((u) => u.type == type);
   });
 });

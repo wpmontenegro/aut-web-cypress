@@ -5,24 +5,12 @@ Given("el usuario abre la página de login", () => {
   cy.visit("/");
 });
 
-When(
-  "ingresa el usuario {string} y contraseña {string}",
-  (username, password) => {
-    loginPage.getUsername().type(username);
-    loginPage.getPassword().type(password);
-  }
-);
-
-When("presiona el botón de login", () => {
-  loginPage.getLoginButton().click();
+When("ingresa el usuario de tipo {string} y se loguea", (type) => {
+  cy.loginByType(type);
 });
 
 Then("debería ver la página de inventario", () => {
   cy.url().should("include", "/inventory");
-});
-
-When("ingresa el usuario de tipo {string} y nos logueamos", (type) => {
-  cy.loginByType(type);
 });
 
 Then("debería ver el mensaje de error {string}", (message) => {

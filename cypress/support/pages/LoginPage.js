@@ -4,11 +4,11 @@ class LoginPage {
   }
 
   getPassword() {
-    return cy.get("#password");
+    return cy.getByDataTest("password");
   }
 
   getLoginButton() {
-    return cy.get("#login-button");
+    return cy.get(".submit-button");
   }
 
   getErrorMessage() {
