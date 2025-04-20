@@ -11,6 +11,7 @@ When("ingresa el usuario de tipo {string} y se loguea", (type) => {
 
 Then("debería ver la página de inventario", () => {
   cy.url().should("include", "/inventory");
+  cy.contains("Products").should("be.visible");
 });
 
 Then("debería ver el mensaje de error {string}", (message) => {
