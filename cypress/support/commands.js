@@ -1,4 +1,4 @@
-import loginPage from "./page_objects/LoginPage";
+import { loginPage } from "./pages/LoginPage";
 
 const globalStore = new Map();
 

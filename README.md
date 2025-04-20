@@ -19,7 +19,7 @@ AUT-WEB-CYPRESS
 │   │   │── dev.settings.json
 │   │   │── qa.settings.json
 │   │── support               # Soporte para comandos y definiciones de páginas
-│   │   │── page_objects      # Implementación del Page Object Model (POM)
+│   │   │── pages      # Implementación del Page Object Model (POM)
 │   │   │── step_definitions  # Definiciones de pasos para Cucumber
 │   │── commands.js           # Comandos personalizados de Cypress
 │   │── e2e.js                # Archivo de configuración para pruebas end-to-end
@@ -36,7 +36,7 @@ AUT-WEB-CYPRESS
 1. Clonar el repositorio:
 
    ```sh
-   git clone <repo-url>
+   git clone https://gitlab.com/testever/aut-web-cypress
    cd aut-web-cypress
    ```
 
@@ -51,11 +51,11 @@ AUT-WEB-CYPRESS
 4. Ejecutar pruebas:
    - En modo interactivo:
      ```sh
-     npx cypress open
+     npm run cy:open
      ```
    - En modo headless:
      ```sh
-     npx cypress run
+     npm run cy:run
      ```
 
 ---
@@ -99,20 +99,19 @@ Se ha implementado un patrón **POM** para mejorar la mantenibilidad de los loca
 Ejemplo de `productPage.js`:
 
 ```js
-const productPage = {
-  getElementToAddCart: (product) => {
+class ProductPage {
+  getElementToAddCart(product) {
     return cy
       .get(".inventory_item_name")
       .contains(product)
       .closest(".inventory_item_description")
       .findByDataTest("add-to-cart");
-  },
-  getNumberOfItems: () => {
+  }
+  getNumberOfItems() {
     return cy.getByDataTest("shopping-cart-badge");
-  },
-};
-
-export default productPage;
+  }
+}
+export const productPage = new ProductPage();
 ```
 
 ---
