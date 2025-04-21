@@ -2,6 +2,7 @@
   "baseUrl": "https://www.saucedemo.com",
   "env": {
     "environment": "qa",
+    "apiUrl": "https://reqres.in/api",
     "apiKey": "your_api_key_here"
   }
 }

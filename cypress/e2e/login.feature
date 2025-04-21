@@ -1,3 +1,4 @@
+# CASO DE PRUEBA PARA REALIAR LOGIN EN SAUCEDEMO Y USAR CUSTOM COMMANDS Y LECTURE DE FIXTURE
 Feature: Login en SauceDemo
 
   Background: Ingreso pantalla Login

@@ -4,11 +4,15 @@ class ProductPage {
       .get(".inventory_item_name")
       .contains(product)
       .closest(".inventory_item_description")
-      .findByDataTest("add-to-cart");
+      .find("button");
   }
 
   getNumberOfItems() {
     return cy.getByDataTest("shopping-cart-badge");
+  }
+
+  getShoppingCart() {
+    return cy.getByDataTest("shopping-cart-link");
   }
 }
 

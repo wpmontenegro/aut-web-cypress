@@ -6,12 +6,14 @@ Given("el usuario se encuentra en la página de inventario", () => {
   cy.loginByType("standard");
 });
 
-When("selecciona los productos", (table) => {
+When("agrego los productos al carrito", (table) => {
   table.raw()[0].forEach((item) => {
-    productPage.getElementToAddCart(item).click();
+    productPage.getElementToAddCart(item).as("itemToAddCart").click();
+
+    cy.get("@itemToAddCart").should("have.text", "Remove");
   });
 });
 
-Then("se deberían agregar {int} productos al carrito", (numberItems) => {
+Then("el carrito debe tener {int} productos", (numberItems) => {
   productPage.getNumberOfItems().contains(numberItems);
 });
