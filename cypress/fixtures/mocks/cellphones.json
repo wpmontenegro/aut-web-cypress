@@ -1,0 +1,30 @@
+{
+  "products": [
+    {
+      "availableSizes": ["Apple"],
+      "currencyFormat": "$",
+      "currencyId": "USD",
+      "description": "iPhone 18",
+      "id": 1,
+      "installments": 9,
+      "isFav": false,
+      "altText": "img",
+      "price": 799,
+      "sku": "iPhone12-device-info.png",
+      "title": "iPhone 18"
+    },
+    {
+      "availableSizes": ["Google"],
+      "currencyFormat": "$",
+      "currencyId": "USD",
+      "description": "Pixel 9",
+      "id": 2,
+      "installments": 9,
+      "altText": "img",
+      "isFav": false,
+      "price": 899,
+      "sku": "GooglePixel4-device-info.png",
+      "title": "Pixel 9"
+    }
+  ]
+}

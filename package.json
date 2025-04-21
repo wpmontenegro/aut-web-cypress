@@ -7,7 +7,6 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:qa": "cypress run --env environment=qa",
-    "cy:dev": "cypress run --env environment=dev",
     "cy:firefox": "cypress run --browser firefox",
     "cy:mobile": "cypress run --config viewportWidth=375,viewportHeight=667"
   },
@@ -17,9 +16,6 @@
   },
   "author": "William Montenegro",
   "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/testever/aut-web-cypress/issues"
-  },
   "homepage": "https://gitlab.com/testever/aut-web-cypress#readme",
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^22.0.1",

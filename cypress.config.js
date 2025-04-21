@@ -18,6 +18,7 @@ module.exports = defineConfig({
     inlineAssets: true,
     timestamp: "mmddyyyy_HHMMss",
   },
+  video: false,
   e2e: {
     async setupNodeEvents(cypressOn, config) {
       return await setupPlugins(cypressOn, config);

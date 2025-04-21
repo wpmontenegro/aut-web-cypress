@@ -1,3 +1,4 @@
+# CASO DE PRUEBA PARA REALIAR LOGIN EN SAUCEDEMO Y USAR CUSTOM COMMANDS Y LECTURE DE FIXTURE
 Feature: Login en SauceDemo
 
   Background: Ingreso pantalla Login
@@ -5,17 +6,16 @@ Feature: Login en SauceDemo
 
   @Login @HP
   Scenario: Usuario inicia sesión exitosamente
-    When ingresa el usuario "<user>" y contraseña "<password>"
-    And presiona el botón de login
+    When ingresa el usuario de tipo "<type>" y se loguea
     Then debería ver la página de inventario
     Examples:
-      | user          | password     |
-      | standard_user | secret_sauce |
-      | visual_user   | secret_sauce |
+      | type     |
+      | standard |
+      | visual   |
 
   @Login @SP
   Scenario: Usuario bloqueado falla al iniciar sesión
-    When ingresa el usuario de tipo "<type>" y nos logueamos
+    When ingresa el usuario de tipo "<type>" y se loguea
     Then debería ver el mensaje de error "<error>"
     Examples:
       | type   | error                                               |
