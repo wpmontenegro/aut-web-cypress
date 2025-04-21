@@ -1,8 +1,9 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { loginPage } from "../../pages/sauce/LoginPage";
+import { urls } from "../../utils/urls";
 
 Given("el usuario abre la página de login", () => {
-  cy.visit(Cypress.env("sauceUrl"));
+  cy.visit(urls.sauce);
 });
 
 When("ingresa el usuario de tipo {string} y se loguea", (type) => {

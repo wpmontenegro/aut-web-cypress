@@ -1,5 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { cellphonesPage } from "../../pages/bstack/CellphonesPage";
+import { urls } from "../../utils/urls";
 
 const cellphonesPath = "mocks/cellphones";
 
@@ -10,7 +11,7 @@ Given("intercepto la API de celulares para mockear los productos", () => {
 });
 
 When("el usuario se encuentra en la página de celulares", () => {
-  cy.visit(Cypress.env("bstackUrl"));
+  cy.visit(urls.bstack);
 });
 
 Then("debería ver la lista de celulares mockeada", () => {
