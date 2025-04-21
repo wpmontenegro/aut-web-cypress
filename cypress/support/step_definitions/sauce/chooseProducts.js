@@ -1,8 +1,8 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import { productPage } from "../pages/ProductsPage";
+import { productPage } from "../../pages/sauce/ProductsPage";
 
 Given("el usuario se encuentra en la página de inventario", () => {
-  cy.visit("/");
+  cy.visit(Cypress.env("sauceUrl"));
   cy.loginByType("standard");
 });
 

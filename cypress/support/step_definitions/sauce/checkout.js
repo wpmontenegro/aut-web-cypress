@@ -1,7 +1,7 @@
 import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import { productPage } from "../pages/ProductsPage";
-import { cartPage } from "../pages/CartPage";
-import { checkoutPage } from "../pages/CheckoutPage";
+import { productPage } from "../../pages/sauce/ProductsPage";
+import { cartPage } from "../../pages/sauce/CartPage";
+import { checkoutPage } from "../../pages/sauce/CheckoutPage";
 
 When("ingreso a la seccion de checkout", () => {
   productPage.getShoppingCart().click();

@@ -1,7 +1,9 @@
 {
-  "baseUrl": "https://www.saucedemo.com",
+  "baseUrl": null,
   "env": {
     "environment": "qa",
+    "sauceUrl": "https://www.saucedemo.com",
+    "bstackUrl": "https://www.bstackdemo.com",
     "apiUrl": "https://reqres.in/api",
     "apiKey": "your_api_key_here"
   }
