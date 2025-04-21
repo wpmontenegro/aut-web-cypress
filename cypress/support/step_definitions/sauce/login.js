@@ -16,5 +16,5 @@ Then("debería ver la página de inventario", () => {
 });
 
 Then("debería ver el mensaje de error {string}", (message) => {
-  loginPage.getErrorMessage().should("include.text", message);
+  loginPage.errorMessage().should("include.text", message);
 });

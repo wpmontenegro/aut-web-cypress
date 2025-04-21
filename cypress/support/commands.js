@@ -1,4 +1,4 @@
-import { loginPage } from "./pages/LoginPage";
+import "./commands/sauceCommands";
 
 const globalStore = new Map();
 
@@ -34,19 +34,4 @@ Cypress.Commands.add("getGlobalValue", (key) => {
 
 Cypress.Commands.add("clearGlobalStore", () => {
   globalStore.clear();
-});
-
-// CUSTOM
-Cypress.Commands.add("getUserDataByType", (type) => {
-  return cy.fixture("data/users").then((users) => {
-    return users.find((u) => u.type == type);
-  });
-});
-
-Cypress.Commands.add("loginByType", (type) => {
-  cy.getUserDataByType(type).then((user) => {
-    loginPage.getUsername().type(user.username);
-    loginPage.getPassword().type(user.password);
-    loginPage.getLoginButton().click();
-  });
 });

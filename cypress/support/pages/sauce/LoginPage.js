@@ -1,19 +1,6 @@
-class LoginPage {
-  getUsername() {
-    return cy.get("#user-name");
-  }
-
-  getPassword() {
-    return cy.getByDataTest("password");
-  }
-
-  getLoginButton() {
-    return cy.get(".submit-button");
-  }
-
-  getErrorMessage() {
-    return cy.getByDataTest("error");
-  }
-}
-
-export const loginPage = new LoginPage();
+export const loginPage = {
+  usernameInput: () => cy.get("#user-name"),
+  passwordInput: () => cy.getByDataTest("password"),
+  loginButton: () => cy.get(".submit-button"),
+  errorMessage: () => cy.getByDataTest("error"),
+};

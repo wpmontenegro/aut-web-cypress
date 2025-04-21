@@ -17,7 +17,7 @@ When("el usuario se encuentra en la página de celulares", () => {
 Then("debería ver la lista de celulares mockeada", () => {
   cy.fixture(cellphonesPath).then((data) => {
     data.products.forEach((product) => {
-      cellphonesPage.getCellphoneTitle(product.title).should("be.visible");
+      cellphonesPage.cellphoneTitle(product.title).should("be.visible");
     });
   });
 });

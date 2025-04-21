@@ -1,19 +1,6 @@
-class CheckoutPage {
-  getFirstName() {
-    return cy.getByDataTest("firstName");
-  }
-
-  getLastName() {
-    return cy.getByDataTest("lastName");
-  }
-
-  getPostalCode() {
-    return cy.getByDataTest("postalCode");
-  }
-
-  getContinue() {
-    return cy.get("[name='continue']");
-  }
-}
-
-export const checkoutPage = new CheckoutPage();
+export const checkoutPage = {
+  firstNameInput: () => cy.getByDataTest("firstName"),
+  lastNameInput: () => cy.getByDataTest("lastName"),
+  postalCodeInput: () => cy.getByDataTest("postalCode"),
+  continueButton: () => cy.get("[name='continue']"),
+};

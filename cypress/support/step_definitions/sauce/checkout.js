@@ -4,8 +4,8 @@ import { cartPage } from "../../pages/sauce/CartPage";
 import { checkoutPage } from "../../pages/sauce/CheckoutPage";
 
 When("ingreso a la seccion de checkout", () => {
-  productPage.getShoppingCart().click();
-  cartPage.getCheckout().click();
+  productPage.shoppingCartButton().click();
+  cartPage.checkoutButton().click();
 });
 
 When("llamo a una API para obtener mis datos y lleno el formulario", () => {
@@ -19,10 +19,10 @@ When("llamo a una API para obtener mis datos y lleno el formulario", () => {
       id: postalCode,
     } = response.body.data;
 
-    checkoutPage.getFirstName().type(firstName);
-    checkoutPage.getLastName().type(lastName);
-    checkoutPage.getPostalCode().type(postalCode);
-    checkoutPage.getContinue().click();
+    checkoutPage.firstNameInput().type(firstName);
+    checkoutPage.lastNameInput().type(lastName);
+    checkoutPage.postalCodeInput().type(postalCode);
+    checkoutPage.continueButton().click();
   });
 });
 
