@@ -1,10 +1,28 @@
-# Cypress Cucumber Automation Framework
+# Cypress + Cucumber Web Automation Framework
 
-## 📌 Descripción
+Framework de automatización de pruebas para Web basada en Cypress integrado con Cucumber.
+Este proyecto implementa la escritura de pruebas en formato BDD (Gherkin).
+Además permite la configuración de entornos, generación de reportes y buenas prácticas de estructuración de código.
 
-Este framework de automatización de pruebas web está basado en **Cypress** e implementa **Cucumber** para facilitar la escritura de pruebas en un formato BDD. Además, permite la configuración de entornos, generación de reportes y buenas prácticas de estructuración de código.
+## 🚀 Características
 
----
+- Automatización de pruebas web usando Cypress
+- Integración con Cucumber y lenguaje Gherkin
+- Estructura basada en POM
+- Uso de comandos personalizados
+- Generación de reporte con Mochawesome
+- Separación de variables por ambiente
+- Intercepción y mockeo de peticiones
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Lenguaje de programación**: Javascript
+- **Frameworks de automatización**:
+  - [Cypress](https://www.cypress.io/)
+  - [Cucumber](https://cucumber.io/)
+- **Herramientas adicionales**:
+  - [NPM](https://www.npmjs.com/)
+  - [Mochawesome](https://www.npmjs.com/package/cypress-mochawesome-reporter)
 
 ## 📂 Estructura del Proyecto
 
@@ -29,47 +47,40 @@ AUT-WEB-CYPRESS
 │── package.json              # Dependencias y scripts de Node.js
 ```
 
----
-
 ## 📋 Instalación
 
-1. Clonar el repositorio:
+### Clonar el Repositorio
 
-   ```sh
-   git clone https://gitlab.com/testever/aut-web-cypress
-   cd aut-web-cypress
-   ```
+```sh
+git clone https://github.com/wpmontenegro/aut-web-cypress.git
+cd aut-web-cypress
+```
 
-2. Instalar dependencias:
+### Instalación de Dependencias
 
-   ```sh
-   npm install
-   ```
+```sh
+npm install
+```
 
-3. Configurar el entorno en el archivo `cypress.config.js` o en los archivos dentro de `cypress/settings/`.
+## ▶️ Ejecución de pruebas
 
-4. Ejecutar pruebas:
-   - En modo interactivo:
-     ```sh
-     npm run cy:open
-     ```
-   - En modo headless:
-     ```sh
-     npm run cy:run
-     ```
+### Modo interactivo
 
----
+Ejecutar las pruebas:
 
-## 🏗 Tecnologías y Herramientas Utilizadas
+```sh
+npm run cy:open
+```
 
-- [Cypress](https://www.cypress.io/)
-- [Cucumber](https://cucumber.io/)
-- [Mochawesome](https://www.npmjs.com/package/cypress-mochawesome-reporter) (para reportes)
-- GitLab CI/CD
+### Modo headless
 
----
+Ejecutar las pruebas:
 
-## 🔧 Configuración de Entornos
+```sh
+npm run cy:run
+```
+
+## 🔧 Configuración
 
 El framework permite la ejecución en distintos entornos mediante archivos JSON en `cypress/settings/`.
 
@@ -90,8 +101,6 @@ Para especificar el entorno al ejecutar pruebas:
 npx cypress run --env environment=qa
 ```
 
----
-
 ## 🏗 Page Object Model (POM)
 
 Se ha implementado un patrón **POM** para mejorar la mantenibilidad de los localizadores.
@@ -99,22 +108,17 @@ Se ha implementado un patrón **POM** para mejorar la mantenibilidad de los loca
 Ejemplo de `productPage.js`:
 
 ```js
-class ProductPage {
-  getElementToAddCart(product) {
-    return cy
+export const productPage = {
+  addItemToCartButton: (product) =>
+    cy
       .get(".inventory_item_name")
       .contains(product)
       .closest(".inventory_item_description")
-      .findByDataTest("add-to-cart");
-  }
-  getNumberOfItems() {
-    return cy.getByDataTest("shopping-cart-badge");
-  }
-}
-export const productPage = new ProductPage();
+      .find("button"),
+  numberOfItems: () => cy.getByDataTest("shopping-cart-badge"),
+  shoppingCartButton: () => cy.getByDataTest("shopping-cart-link"),
+};
 ```
-
----
 
 ## 📜 Comandos Personalizados
 
@@ -122,49 +126,19 @@ En el archivo `commands.js`, se han definido algunos comandos personalizados:
 
 ```js
 Cypress.Commands.add("getByDataTest", (selector) => {
-  return cy.get(`[data-test*="${selector}"]`);
+  return cy.get(`[data-test="${selector}"]`);
 });
 ```
 
----
+## 📊 Reportes de Pruebas
 
-## 📊 Reportes
-
-El framework genera reportes utilizando **Mochawesome**.
-
+El framework genera reportes utilizando Mochawesome.
 Los reportes se almacenan en la carpeta `cypress/reports/`.
 
----
+## 📬 Contacto
 
-## 🔄 Integración con CI/CD
+Para preguntas o sugerencias, puedes contactarme a través de:
 
-Se ha configurado **GitLab CI/CD** en el archivo `.gitlab-ci.yml` para ejecutar pruebas automáticamente en cada commit.
-
-Ejemplo de configuración:
-
-```yaml
-stages:
-  - test
-
-test:e2e:
-  image: cypress/included:latest
-  script:
-    - npx cypress run
-  artifacts:
-    paths:
-      - cypress/reports/
-```
-
----
-
-## 📌 Contribuciones
-
-Si deseas contribuir al proyecto, por favor sigue los siguientes pasos:
-
-1. Realiza un fork del repositorio
-2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`)
-3. Realiza tus cambios y haz un commit (`git commit -m "Agregada nueva funcionalidad"`)
-4. Sube tus cambios (`git push origin feature/nueva-funcionalidad`)
-5. Abre un Pull Request
-
----
+- Correo electrónico: wmontenegro@outlook.com.pe
+- LinkedIn: [**wmontenegro**](https://www.linkedin.com/in/wmontenegro)
+- GitHub: [**wpmontenegro**](https://github.com/wpmontenegro)
