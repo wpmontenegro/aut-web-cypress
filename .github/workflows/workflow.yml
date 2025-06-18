@@ -1,0 +1,41 @@
+name: Cypress Web Automation CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: "Selecciona el navegador"
+        required: true
+        default: "chrome"
+        type: choice
+        options:
+          - chrome
+          - firefox
+      env:
+        description: "Selecciona el ambiente"
+        required: true
+        default: "qa"
+        type: choice
+        options:
+          - dev
+          - qa
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: "npm"
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar pruebas Cypress
+        run: npm run cy:run -- --env environment=${{ github.event.inputs.env }} --browser ${{ github.event.inputs.browser }}
