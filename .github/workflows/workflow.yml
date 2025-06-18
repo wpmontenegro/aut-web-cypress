@@ -1,6 +1,9 @@
 name: Cypress Web Automation CI
 
 on:
+  push:
+    branches:
+      - feature/pipeline
   workflow_dispatch:
     inputs:
       browser:
