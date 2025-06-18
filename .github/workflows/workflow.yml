@@ -38,4 +38,10 @@ jobs:
         run: npm ci
 
       - name: Ejecutar pruebas Cypress
-        run: npm run cy:run -- --env environment=${{ github.event.inputs.env }} --browser ${{ github.event.inputs.browser }}
+        run: npm run cy:run --env environment=${{ github.event.inputs.env }} --browser ${{ github.event.inputs.browser }}
+
+      - name: Subir reporte Cypress como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Reporte-Cypress
+          path: cypress/reports/html
